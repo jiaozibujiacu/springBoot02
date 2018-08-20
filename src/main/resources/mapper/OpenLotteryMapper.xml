@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiaozi.dao.OpenLotteryDao">
+	<insert id="addOpenLottery">
+		insert into open_lottery 
+		(num_str ,num_open_1 ,num_open_2  ) 
+		value 
+		(#{numStr},#{numOpen1},#{numOpen2})
+	</insert>
+	
+	<!-- 两个查询参数 -->
+	<select id="getOpenLotteryByT" resultType="com.jiaozi.domain.OpenLottery">
+		select id ,num_str numStr,num_open_1 numOpen1,num_open_2 numOpen2 ,open_time openTime 
+				from open_lottery 
+						where  num_open_1 = #{numOpen1} 
+							and  num_open_2 = #{numOpen2}
+	</select>
+				
+ 	<select id="getAllOpenLottery" resultType="com.jiaozi.domain.OpenLottery">
+ 		select id ,num_str numStr,num_open_1 numOpen1,num_open_2 numOpen2 ,open_time openTime 
+				from open_lottery  
+ 	</select>
+</mapper>
